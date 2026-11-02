@@ -1,0 +1,745 @@
+import { Question, ConversationPrompt, WheelSector } from './types.ts';
+
+export const QUESTIONS_DATA: Question[] = [
+  // Parte 1. Durante el partido — Խաղի ընթացքում
+  {
+    id: 1,
+    part: 1,
+    partTitleEs: 'Parte 1. Durante el partido',
+    partTitleAm: 'Մաս 1. Խաղի ընթացքում',
+    questionEs: 'Estás solo frente al portero, pero un defensa se acerca rápidamente. ¿Qué harías?',
+    questionAm: 'Դու մենակ ես դարպասապահի դիմաց, բայց պաշտպանը արագ մոտենում է։ Ի՞նչ կանեիր։',
+    options: [
+      {
+        key: 'A',
+        textEs: 'Dispararía rápidamente si tengo un buen ángulo.',
+        textAm: 'Արագ կհարվածեի, եթե հարմար անկյուն ունենայի։',
+      },
+      {
+        key: 'B',
+        textEs: 'Esperaría a que llegara el defensa.',
+        textAm: 'Կսպասեի, մինչև պաշտպանը մոտենար։',
+      },
+      {
+        key: 'C',
+        textEs: 'Volvería hacia mi campo.',
+        textAm: 'Կվերադառնայի իմ կիսադաշտ։',
+      },
+      {
+        key: 'D',
+        textEs: 'Dejaría pasar el balón.',
+        textAm: 'Բաց կթողնեի գնդակը։',
+      },
+    ],
+    correctOptionKey: 'A',
+    explanationEs: 'En el mano a mano con el portero, la rapidez de definición antes del cruce defensivo es determinante para marcar.',
+    explanationAm: 'Դարպասապահի հետ մեն-մենակ մնալիս պաշտպանի հասնելուց առաջ արագ հարվածելը վճռորոշ է գոլ խփելու համար։',
+  },
+  {
+    id: 2,
+    part: 1,
+    partTitleEs: 'Parte 1. Durante el partido',
+    partTitleAm: 'Մաս 1. Խաղի ընթացքում',
+    questionEs: 'Tu equipo pierde 1-0 en el minuto 90 y tienes el balón cerca del área rival. Un compañero está completamente libre. ¿Qué harías?',
+    questionAm: 'Թիմդ 90-րդ րոպեին պարտվում է 1-0, և գնդակը քեզ մոտ է՝ մրցակցի տուգանային հրապարակի մոտ։ Թիմակիցդ լիովին ազատ է։ Ի՞նչ կանեիր։',
+    options: [
+      {
+        key: 'A',
+        textEs: 'Intentaría regatear a tres defensas.',
+        textAm: 'Կփորձեի շրջանցել երեք պաշտպանի։',
+      },
+      {
+        key: 'B',
+        textEs: 'Le pasaría el balón al compañero libre.',
+        textAm: 'Գնդակը կփոխանցեի ազատ թիմակցիս։',
+      },
+      {
+        key: 'C',
+        textEs: 'Llevaría el balón hacia el centro del campo.',
+        textAm: 'Գնդակը կտանեի խաղադաշտի կենտրոն։',
+      },
+      {
+        key: 'D',
+        textEs: 'Esperaría a que terminara el partido.',
+        textAm: 'Կսպասեի խաղի ավարտին։',
+      },
+    ],
+    correctOptionKey: 'B',
+    explanationEs: 'Pasar al compañero libre en el último minuto maximiza las probabilidades de empatar el encuentro.',
+    explanationAm: 'Վերջին րոպեին ազատ թիմակցին փոխանցելը մեծացնում է հաշիվը հավասարեցնելու հավանականությունը։',
+  },
+  {
+    id: 3,
+    part: 1,
+    partTitleEs: 'Parte 1. Durante el partido',
+    partTitleAm: 'Մաս 1. Խաղի ընթացքում',
+    questionEs: 'Recibes el balón de espaldas a la portería rival y un defensa te presiona. ¿Qué harías?',
+    questionAm: 'Գնդակը ստանում ես մրցակցի դարպասին մեջքով կանգնած, իսկ պաշտպանը ճնշում է քեզ։ Ի՞նչ կանեիր։',
+    options: [
+      {
+        key: 'A',
+        textEs: 'Dispararía sin mirar.',
+        textAm: 'Կհարվածեի առանց նայելու։',
+      },
+      {
+        key: 'B',
+        textEs: 'Intentaría girarme inmediatamente, aunque no hubiera espacio.',
+        textAm: 'Կփորձեի անմիջապես շրջվել, նույնիսկ եթե տեղ չլիներ։',
+      },
+      {
+        key: 'C',
+        textEs: 'Protegería el balón y buscaría un pase seguro.',
+        textAm: 'Կպաշտպանեի գնդակը և անվտանգ փոխանցում կփնտրեի։',
+      },
+      {
+        key: 'D',
+        textEs: 'Me quedaría inmóvil.',
+        textAm: 'Անշարժ կմնայի։',
+      },
+    ],
+    correctOptionKey: 'C',
+    explanationEs: 'Aguantar la pelota con el cuerpo y descargar con seguridad evita pérdidas peligrosas.',
+    explanationAm: 'Գնդակը մարմնով պաշտպանելն ու ապահով փոխանցում գտնելը թույլ է տալիս չկորցնել գնդակը։',
+  },
+  {
+    id: 4,
+    part: 1,
+    partTitleEs: 'Parte 1. Durante el partido',
+    partTitleAm: 'Մաս 1. Խաղի ընթացքում',
+    questionEs: 'Tu equipo gana 2-1 y quedan treinta segundos. Estás cerca de la esquina del campo rival. ¿Qué harías?',
+    questionAm: 'Թիմդ հաղթում է 2-1, և մնացել է 30 վայրկյան։ Դու մրցակցի կիսադաշտի անկյունի մոտ ես։ Ի՞նչ կանեիր։',
+    options: [
+      {
+        key: 'A',
+        textEs: 'Intentaría marcar desde una posición muy difícil.',
+        textAm: 'Կփորձեի գոլ խփել շատ դժվար դիրքից։',
+      },
+      {
+        key: 'B',
+        textEs: 'Pasaría el balón al rival.',
+        textAm: 'Գնդակը կփոխանցեի մրցակցին։',
+      },
+      {
+        key: 'C',
+        textEs: 'Correría hacia mi propia portería con el balón.',
+        textAm: 'Գնդակով կվազեի դեպի սեփական դարպասը։',
+      },
+      {
+        key: 'D',
+        textEs: 'Protegería el balón y trataría de mantener la posesión.',
+        textAm: 'Կպաշտպանեի գնդակը և կփորձեի պահպանել տիրապետումը։',
+      },
+    ],
+    correctOptionKey: 'D',
+    explanationEs: 'Retener el balón cerca del banderín de córner en los últimos segundos asegura la victoria sin riesgos.',
+    explanationAm: 'Վերջին վայրկյաններին անկյունայինի մոտ գնդակը պահելը երաշխավորում է հաղթանակն առանց ավելորդ ռիսկի։',
+  },
+  {
+    id: 5,
+    part: 1,
+    partTitleEs: 'Parte 1. Durante el partido',
+    partTitleAm: 'Մաս 1. Խաղի ընթացքում',
+    questionEs: 'Estás defendiendo y dos rivales atacan contra ti. Tu compañero viene a ayudarte, pero todavía está lejos. ¿Qué harías?',
+    questionAm: 'Դու պաշտպանվում ես, և երկու մրցակից գրոհում են քո դեմ։ Թիմակիցդ գալիս է օգնելու, բայց դեռ հեռու է։ Ի՞նչ կանեիր։',
+    options: [
+      {
+        key: 'A',
+        textEs: 'Retrocedería controlando el espacio para ganar tiempo.',
+        textAm: 'Հետ կքաշվեի՝ վերահսկելով տարածությունը և ժամանակ շահելով։',
+      },
+      {
+        key: 'B',
+        textEs: 'Me lanzaría inmediatamente contra el jugador con balón.',
+        textAm: 'Անմիջապես կնետվեի գնդակով խաղացողի վրա։',
+      },
+      {
+        key: 'C',
+        textEs: 'Dejaría de defender.',
+        textAm: 'Կդադարեցնեի պաշտպանվելը։',
+      },
+      {
+        key: 'D',
+        textEs: 'Correría hacia la otra portería.',
+        textAm: 'Կվազեի մյուս դարպասի ուղղությամբ։',
+      },
+    ],
+    correctOptionKey: 'A',
+    explanationEs: 'Temporizar y retroceder con criterio permite que la ayuda llegue antes de que el rival filtre el pase.',
+    explanationAm: 'Դանդաղեցնելով և հետ քաշվելով ժամանակ ես շահում, որպեսզի թիմակիցդ հասնի օգնության։',
+  },
+
+  // Parte 2. Decisiones rápidas — Արագ որոշումներ
+  {
+    id: 6,
+    part: 2,
+    partTitleEs: 'Parte 2. Decisiones rápidas',
+    partTitleAm: 'Մաս 2. Արագ որոշումներ',
+    questionEs: 'Tu compañero falla un pase y el rival inicia un contraataque peligroso. Estás cerca de la jugada. ¿Qué harías?',
+    questionAm: 'Թիմակիցդ սխալ փոխանցում է կատարում, և մրցակիցը վտանգավոր հակագրոհ է սկսում։ Դու դրվագի մոտ ես։ Ի՞նչ կանեիր։',
+    options: [
+      {
+        key: 'A',
+        textEs: 'Le reprocharía el error inmediatamente.',
+        textAm: 'Անմիջապես կմեղադրեի նրան սխալի համար։',
+      },
+      {
+        key: 'B',
+        textEs: 'Me quedaría esperando instrucciones.',
+        textAm: 'Կմնայի՝ սպասելով ցուցումների։',
+      },
+      {
+        key: 'C',
+        textEs: 'Volvería rápidamente para ayudar en defensa.',
+        textAm: 'Արագ հետ կվերադառնայի՝ պաշտպանությանը օգնելու համար։',
+      },
+      {
+        key: 'D',
+        textEs: 'Seguiría atacando sin mirar atrás.',
+        textAm: 'Կշարունակեի գրոհել՝ առանց հետ նայելու։',
+      },
+    ],
+    correctOptionKey: 'C',
+    explanationEs: 'El repliegue defensivo inmediato es clave en transiciones negativas para frenar el contraataque.',
+    explanationAm: 'Անմիջապես հետ վազելն ու պաշտպանվելը կարևորագույնն է հակագրոհը չեզոքացնելու համար։',
+  },
+  {
+    id: 7,
+    part: 2,
+    partTitleEs: 'Parte 2. Decisiones rápidas',
+    partTitleAm: 'Մաս 2. Արագ որոշումներ',
+    questionEs: 'Estás a punto de disparar, pero el balón te queda en la pierna menos hábil. Un rival se acerca. ¿Qué harías?',
+    questionAm: 'Պատրաստվում ես հարվածել, բայց գնդակը հայտնվում է քո ավելի թույլ ոտքի մոտ։ Մրցակիցը մոտենում է։ Ի՞նչ կանեիր։',
+    options: [
+      {
+        key: 'A',
+        textEs: 'Esperaría hasta colocar el balón perfectamente.',
+        textAm: 'Կսպասեի, մինչև գնդակը կատարյալ դիրքում լիներ։',
+      },
+      {
+        key: 'B',
+        textEs: 'Dispararía con la pierna menos hábil si la ocasión es clara.',
+        textAm: 'Կհարվածեի ավելի թույլ ոտքով, եթե պահը հարմար լիներ։',
+      },
+      {
+        key: 'C',
+        textEs: 'Cerraría los ojos y dispararía.',
+        textAm: 'Աչքերս կփակեի և կհարվածեի։',
+      },
+      {
+        key: 'D',
+        textEs: 'Dejaría que el rival recuperara el balón.',
+        textAm: 'Թույլ կտայի մրցակցին խլել գնդակը։',
+      },
+    ],
+    correctOptionKey: 'B',
+    explanationEs: 'Un remate rápido con la pierna menos hábil a menudo sorprende al portero antes de perder la ocasión.',
+    explanationAm: 'Թույլ ոտքով անակնկալ հարվածը հաճախ արդյունավետ է լինում, քան գնդակը հարմարեցնելիս պահը կորցնելը։',
+  },
+  {
+    id: 8,
+    part: 2,
+    partTitleEs: 'Parte 2. Decisiones rápidas',
+    partTitleAm: 'Մաս 2. Արագ որոշումներ',
+    questionEs: 'El portero de tu equipo te pasa el balón, pero un delantero rival corre hacia ti. Tienes un compañero libre a tu derecha. ¿Qué harías?',
+    questionAm: 'Քո թիմի դարպասապահը քեզ փոխանցում է գնդակը, բայց մրցակցի հարձակվողը վազում է դեպի քեզ։ Աջ կողմում ազատ թիմակից ունես։ Ի՞նչ կանեիր։',
+    options: [
+      {
+        key: 'A',
+        textEs: 'Intentaría regatear al delantero dentro de mi área.',
+        textAm: 'Կփորձեի շրջանցել հարձակվողին իմ տուգանային հրապարակում։',
+      },
+      {
+        key: 'B',
+        textEs: 'Esperaría a que llegara el rival.',
+        textAm: 'Կսպասեի, մինչև մրցակիցը մոտենար։',
+      },
+      {
+        key: 'C',
+        textEs: 'Dispararía hacia mi propia portería.',
+        textAm: 'Կհարվածեի սեփական դարպասի ուղղությամբ։',
+      },
+      {
+        key: 'D',
+        textEs: 'Pasaría rápidamente al compañero libre.',
+        textAm: 'Արագ կփոխանցեի ազատ թիմակցիս։',
+      },
+    ],
+    correctOptionKey: 'D',
+    explanationEs: 'Descargar al compañero desmarcado en salida de balón evita errores fatales cerca del arco propio.',
+    explanationAm: 'Սեփական դարպասի մոտ ազատ թիմակցին արագ փոխանցելն ամենաապահով լուծումն է։',
+  },
+  {
+    id: 9,
+    part: 2,
+    partTitleEs: 'Parte 2. Decisiones rápidas',
+    partTitleAm: 'Մաս 2. Արագ որոշումներ',
+    questionEs: 'Un compañero se lesiona y cae al suelo. El árbitro todavía no ha detenido el partido y la lesión parece grave. ¿Qué harías?',
+    questionAm: 'Թիմակիցդ վնասվածք է ստանում և ընկնում խոտածածկին։ Մրցավարը դեռ չի կանգնեցրել խաղը, իսկ վնասվածքը լուրջ է թվում։ Ի՞նչ կանեիր։',
+    options: [
+      {
+        key: 'A',
+        textEs: 'Avisaría inmediatamente al árbitro y pediría asistencia médica.',
+        textAm: 'Անմիջապես կզգուշացնեի մրցավարին և բժշկական օգնություն կխնդրեի։',
+      },
+      {
+        key: 'B',
+        textEs: 'Ignoraría la situación.',
+        textAm: 'Կանտեսեի իրավիճակը։',
+      },
+      {
+        key: 'C',
+        textEs: 'Intentaría levantarlo a la fuerza.',
+        textAm: 'Կփորձեի ուժով բարձրացնել նրան։',
+      },
+      {
+        key: 'D',
+        textEs: 'Le diría que siguiera jugando.',
+        textAm: 'Կասեի, որ շարունակի խաղալ։',
+      },
+    ],
+    correctOptionKey: 'A',
+    explanationEs: 'La salud del compañero y el juego limpio siempre tienen prioridad sobre cualquier acción de juego.',
+    explanationAm: 'Խաղընկերոջ առողջությունն ու արդար խաղը (fair play) միշտ գլխավոր առաջնահերթությունն են։',
+  },
+  {
+    id: 10,
+    part: 2,
+    partTitleEs: 'Parte 2. Decisiones rápidas',
+    partTitleAm: 'Մաս 2. Արագ որոշումներ',
+    questionEs: 'Tu entrenador te pide que presiones al defensa rival, pero este tiene dos opciones de pase. ¿Qué harías?',
+    questionAm: 'Մարզիչդ խնդրում է ճնշել մրցակցի պաշտպանին, բայց նա փոխանցման երկու տարբերակ ունի։ Ի՞նչ կանեիր։',
+    options: [
+      {
+        key: 'A',
+        textEs: 'Correría hacia él sin observar nada más.',
+        textAm: 'Կվազեի դեպի նա՝ առանց մյուսներին նայելու։',
+      },
+      {
+        key: 'B',
+        textEs: 'Me quedaría lejos de la jugada.',
+        textAm: 'Կմնայի դրվագից հեռու։',
+      },
+      {
+        key: 'C',
+        textEs: 'Me acercaría orientando la presión para cerrar una línea de pase.',
+        textAm: 'Կմոտենայի այնպես, որ փակեի փոխանցման ուղիներից մեկը։',
+      },
+      {
+        key: 'D',
+        textEs: 'Esperaría a que pasara el balón.',
+        textAm: 'Կսպասեի, մինչև նա փոխանցեր։',
+      },
+    ],
+    correctOptionKey: 'C',
+    explanationEs: 'Tapar la línea de pase más peligrosa mientras presionas fuerza al rival al error.',
+    explanationAm: 'Փոխանցման վտանգավոր գիծը փակելով ճնշելը մրցակցին ստիպում է սխալվել։',
+  },
+
+  // Parte 3. Momentos decisivos — Վճռորոշ պահեր
+  {
+    id: 11,
+    part: 3,
+    partTitleEs: 'Parte 3. Momentos decisivos',
+    partTitleAm: 'Մաս 3. Վճռորոշ պահեր',
+    questionEs: 'Vas a lanzar un penalti decisivo. El portero intenta distraerte hablando. ¿Qué harías?',
+    questionAm: 'Պատրաստվում ես վճռորոշ 11-մետրանոց հարված կատարել։ Դարպասապահը փորձում է խոսելով շեղել քեզ։ Ի՞նչ կանեիր։',
+    options: [
+      {
+        key: 'A',
+        textEs: 'Cambiaría continuamente mi decisión.',
+        textAm: 'Անընդհատ կփոխեի որոշումս։',
+      },
+      {
+        key: 'B',
+        textEs: 'Mantendría la concentración y seguiría mi plan.',
+        textAm: 'Կպահպանեի կենտրոնացումս և կհետևեի իմ ծրագրին։',
+      },
+      {
+        key: 'C',
+        textEs: 'Empezaría a discutir con el portero.',
+        textAm: 'Կսկսեի վիճել դարպասապահի հետ։',
+      },
+      {
+        key: 'D',
+        textEs: 'Golpearía el balón antes de la señal del árbitro.',
+        textAm: 'Գնդակին կհարվածեի մրցավարի ազդանշանից առաջ։',
+      },
+    ],
+    correctOptionKey: 'B',
+    explanationEs: 'En los penales, el control emocional y la firmeza en la decisión elegida aseguran la mejor ejecución.',
+    explanationAm: '11-մետրանոցների ժամանակ հոգեբանական կայունությունն ու որոշմանը հավատարիմ մնալը հաջողության գրավականն են։',
+  },
+  {
+    id: 12,
+    part: 3,
+    partTitleEs: 'Parte 3. Momentos decisivos',
+    partTitleAm: 'Մաս 3. Վճռորոշ պահեր',
+    questionEs: 'En el último minuto tu equipo tiene un córner. El entrenador te pide que subas al ataque, aunque normalmente juegas de defensa. ¿Qué harías?',
+    questionAm: 'Վերջին րոպեին թիմդ անկյունային հարված է ստանում։ Մարզիչը խնդրում է միանալ գրոհին, չնայած սովորաբար պաշտպան ես։ Ի՞նչ կանեիր։',
+    options: [
+      {
+        key: 'A',
+        textEs: 'Me quedaría en mi posición habitual sin avisar.',
+        textAm: 'Առանց զգուշացնելու կմնայի սովորական դիրքում։',
+      },
+      {
+        key: 'B',
+        textEs: 'Me acercaría al árbitro para hablar.',
+        textAm: 'Կմոտենայի մրցավարին խոսելու համար։',
+      },
+      {
+        key: 'C',
+        textEs: 'Esperaría fuera del área sin prestar atención.',
+        textAm: 'Կսպասեի տուգանային հրապարակից դուրս՝ առանց ուշադրություն դարձնելու։',
+      },
+      {
+        key: 'D',
+        textEs: 'Subiría al ataque siguiendo la estrategia del equipo.',
+        textAm: 'Կմիանայի գրոհին՝ հետևելով թիմի տակտիկային։',
+      },
+    ],
+    correctOptionKey: 'D',
+    explanationEs: 'Seguir la instrucción táctica colectiva aporta juego aéreo y sorpresa en los compases finales.',
+    explanationAm: 'Մարզչի տակտիկական պլանին հետևելը երկրորդ հարկում պայքարելու լավագույն հնարավորությունն է։',
+  },
+  {
+    id: 13,
+    part: 3,
+    partTitleEs: 'Parte 3. Momentos decisivos',
+    partTitleAm: 'Մաս 3. Վճռորոշ պահեր',
+    questionEs: 'Has marcado un gol, pero el árbitro señala fuera de juego. ¿Qué harías?',
+    questionAm: 'Գոլ ես խփել, բայց մրցավարը խաղից դուրս վիճակ է արձանագրում։ Ի՞նչ կանեիր։',
+    options: [
+      {
+        key: 'A',
+        textEs: 'Aceptaría la decisión y me prepararía para la siguiente jugada.',
+        textAm: 'Կընդունեի որոշումը և կպատրաստվեի հաջորդ դրվագին։',
+      },
+      {
+        key: 'B',
+        textEs: 'Seguiría celebrando durante varios minutos.',
+        textAm: 'Մի քանի րոպե կշարունակեի տոնել։',
+      },
+      {
+        key: 'C',
+        textEs: 'Abandonaría el campo.',
+        textAm: 'Կլքեի խաղադաշտը։',
+      },
+      {
+        key: 'D',
+        textEs: 'Me negaría a seguir jugando.',
+        textAm: 'Կհրաժարվեի շարունակել խաղը։',
+      },
+    ],
+    correctOptionKey: 'A',
+    explanationEs: 'Respetar el fallo arbitral mantiene la concentración alta para generar la siguiente oportunidad de gol.',
+    explanationAm: 'Մրցավարի որոշումն ընդունելն ու հաջորդ դրվագին կենտրոնանալը պրոֆեսիոնալիզմի նշան է։',
+  },
+  {
+    id: 14,
+    part: 3,
+    partTitleEs: 'Parte 3. Momentos decisivos',
+    partTitleAm: 'Մաս 3. Վճռորոշ պահեր',
+    questionEs: 'Tu equipo tiene una superioridad de tres atacantes contra dos defensas. Tú llevas el balón por el centro. ¿Qué harías?',
+    questionAm: 'Քո թիմն ունի երեք հարձակվող՝ երկու պաշտպանի դեմ։ Դու գնդակով շարժվում ես կենտրոնով։ Ի՞նչ կանեիր։',
+    options: [
+      {
+        key: 'A',
+        textEs: 'Dispararía desde muy lejos sin mirar a mis compañeros.',
+        textAm: 'Շատ հեռվից կհարվածեի՝ առանց թիմակիցներիս նայելու։',
+      },
+      {
+        key: 'B',
+        textEs: 'Me detendría para esperar a más defensas.',
+        textAm: 'Կկանգնեի՝ սպասելով ավելի շատ պաշտպանների։',
+      },
+      {
+        key: 'C',
+        textEs: 'Avanzaría y buscaría el momento adecuado para pasar al compañero libre.',
+        textAm: 'Առաջ կշարժվեի և հարմար պահին կփոխանցեի ազատ թիմակցիս։',
+      },
+      {
+        key: 'D',
+        textEs: 'Retrocedería hasta mi portero.',
+        textAm: 'Կնահանջեի մինչև մեր դարպասապահը։',
+      },
+    ],
+    correctOptionKey: 'C',
+    explanationEs: 'Fijar a los defensas conduciendo hacia adelante y asistir al compañero mejor ubicado es la jugada óptima.',
+    explanationAm: 'Առաջ շարժվելով պաշտպաններին քեզ վրա շեղելն ու ազատ թիմակցին գնդակը հասցնելը իդեալական քայլ է։',
+  },
+  {
+    id: 15,
+    part: 3,
+    partTitleEs: 'Parte 3. Momentos decisivos',
+    partTitleAm: 'Մաս 3. Վճռորոշ պահեր',
+    questionEs: 'El rival deja mucho espacio detrás de sus defensas. Tu compañero tiene el balón y tú eres delantero. ¿Qué harías?',
+    questionAm: 'Մրցակիցը մեծ ազատ տարածություն է թողնում պաշտպանների հետևում։ Գնդակը թիմակցիդ մոտ է, իսկ դու հարձակվող ես։ Ի՞նչ կանեիր։',
+    options: [
+      {
+        key: 'A',
+        textEs: 'Me quedaría parado en el centro.',
+        textAm: 'Անշարժ կմնայի կենտրոնում։',
+      },
+      {
+        key: 'B',
+        textEs: 'Intentaría desmarcarme y correr al espacio libre.',
+        textAm: 'Կփորձեի ազատվել պաշտպանից և վազել ազատ տարածություն։',
+      },
+      {
+        key: 'C',
+        textEs: 'Volvería a hablar con el portero.',
+        textAm: 'Կվերադառնայի դարպասապահի հետ խոսելու։',
+      },
+      {
+        key: 'D',
+        textEs: 'Me acercaría tanto al compañero que no tendría espacio para pasarme.',
+        textAm: 'Այնքան կմոտենայի թիմակցիս, որ փոխանցելու տեղ չէր մնա։',
+      },
+    ],
+    correctOptionKey: 'B',
+    explanationEs: 'Tirar la diagonal al espacio libre rompiendo la línea defensiva es el desmarque ideal para un delantero.',
+    explanationAm: 'Պաշտպանների թիկունքում ազատ տարածություն վազելը հարձակվողի հիմնական զենքն է։',
+  },
+
+  // Parte 4. Comunicación y trabajo en equipo — Հաղորդակցություն և թիմային աշխատանք
+  {
+    id: 16,
+    part: 4,
+    partTitleEs: 'Parte 4. Comunicación y trabajo en equipo',
+    partTitleAm: 'Մաս 4. Հաղորդակցություն և թիմային աշխատանք',
+    questionEs: 'Tu compañero grita: «¡Déjala, voy yo!», y está mejor colocado para recibir el balón. ¿Qué harías?',
+    questionAm: 'Թիմակիցդ բղավում է. «Թո՛ղ, ես եմ գալիս», և գնդակը ստանալու համար նա ավելի հարմար դիրքում է։ Ի՞նչ կանեիր։',
+    options: [
+      {
+        key: 'A',
+        textEs: 'Intentaría tocar el balón de todas formas.',
+        textAm: 'Ամեն դեպքում կփորձեի դիպչել գնդակին։',
+      },
+      {
+        key: 'B',
+        textEs: 'Saldría corriendo del campo.',
+        textAm: 'Կվազեի խաղադաշտից դուրս։',
+      },
+      {
+        key: 'C',
+        textEs: 'Me pondría delante de él.',
+        textAm: 'Կկանգնեի նրա դիմաց։',
+      },
+      {
+        key: 'D',
+        textEs: 'Dejaría el balón y me movería para ofrecer apoyo.',
+        textAm: 'Կթողնեի գնդակը և կշարժվեի նրան օգնելու համար։',
+      },
+    ],
+    correctOptionKey: 'D',
+    explanationEs: 'La comunicación verbal en el campo evita choques innecesarios y favorece la fluidez de la jugada.',
+    explanationAm: 'Խոսքային հաղորդակցությունն ու գնդակը ավելի լավ դիրքում գտնվողին զիջելը թիմային ոգու ապացույց է։',
+  },
+  {
+    id: 17,
+    part: 4,
+    partTitleEs: 'Parte 4. Comunicación y trabajo en equipo',
+    partTitleAm: 'Մաս 4. Հաղորդակցություն և թիմային աշխատանք',
+    questionEs: 'El capitán te pide que cambies de banda porque el rival está dejando espacios libres allí. ¿Qué harías?',
+    questionAm: 'Ավագը խնդրում է փոխել եզրը, որովհետև մրցակիցն այնտեղ ազատ տարածություններ է թողնում։ Ի՞նչ կանեիր։',
+    options: [
+      {
+        key: 'A',
+        textEs: 'Cambiaría de banda y trataría de aprovechar esos espacios.',
+        textAm: 'Կփոխեի եզրը և կփորձեի օգտագործել ազատ տարածությունները։',
+      },
+      {
+        key: 'B',
+        textEs: 'Seguiría jugando en el mismo lugar sin escucharlo.',
+        textAm: 'Կշարունակեի խաղալ նույն տեղում՝ առանց լսելու։',
+      },
+      {
+        key: 'C',
+        textEs: 'Me colocaría detrás del portero.',
+        textAm: 'Կդիրքավորվեի դարպասապահի հետևում։',
+      },
+      {
+        key: 'D',
+        textEs: 'Dejaría de pedir el balón.',
+        textAm: 'Կդադարեի գնդակ խնդրել։',
+      },
+    ],
+    correctOptionKey: 'A',
+    explanationEs: 'Adaptarse tácticamente a las indicaciones del capitán explota las debilidades del rival.',
+    explanationAm: 'Ավագի հրահանգին հետևելը թույլ է տալիս օգտագործել մրցակցի թույլ կողմերը։',
+  },
+  {
+    id: 18,
+    part: 4,
+    partTitleEs: 'Parte 4. Comunicación y trabajo en equipo',
+    partTitleAm: 'Մաս 4. Հաղորդակցություն և թիմային աշխատանք',
+    questionEs: 'Un compañero está desanimado después de fallar dos ocasiones claras. Quedan veinte minutos de partido. ¿Qué harías?',
+    questionAm: 'Թիմակիցդ հուսահատված է երկու լավ հնարավորությունը բաց թողնելուց հետո։ Խաղի ավարտին մնացել է 20 րոպե։ Ի՞նչ կանեիր։',
+    options: [
+      {
+        key: 'A',
+        textEs: 'Le recordaría constantemente sus errores.',
+        textAm: 'Անընդհատ կհիշեցնեի նրա սխալները։',
+      },
+      {
+        key: 'B',
+        textEs: 'Evitaría pasarle el balón durante todo el partido.',
+        textAm: 'Ամբողջ խաղի ընթացքում նրան գնդակ չէի փոխանցի։',
+      },
+      {
+        key: 'C',
+        textEs: 'Lo animaría y le diría que todavía puede marcar.',
+        textAm: 'Կքաջալերեի նրան և կասեի, որ դեռ կարող է գոլ խփել։',
+      },
+      {
+        key: 'D',
+        textEs: 'Le pediría que abandonara el campo.',
+        textAm: 'Կխնդրեի լքել խաղադաշտը։',
+      },
+    ],
+    correctOptionKey: 'C',
+    explanationEs: 'El apoyo moral devuelve la confianza al delantero para que no baje los brazos antes del pitido final.',
+    explanationAm: 'Բարոյական աջակցությունն օգնում է թիմակցին վերականգնել վստահությունը և կրկին հաջողության հասնել։',
+  },
+  {
+    id: 19,
+    part: 4,
+    partTitleEs: 'Parte 4. Comunicación y trabajo en equipo',
+    partTitleAm: 'Մաս 4. Հաղորդակցություն և թիմային աշխատանք',
+    questionEs: 'Durante el partido, el entrenador cambia la estrategia y te pide que juegues más cerca del centro del campo. ¿Qué harías?',
+    questionAm: 'Խաղի ընթացքում մարզիչը փոխում է տակտիկան և խնդրում է, որ ավելի մոտ խաղաս կենտրոնին։ Ի՞նչ կանեիր։',
+    options: [
+      {
+        key: 'A',
+        textEs: 'Continuaría exactamente igual.',
+        textAm: 'Կշարունակեի ճիշտ նույն կերպ։',
+      },
+      {
+        key: 'B',
+        textEs: 'Ajustaría mi posición y escucharía sus nuevas instrucciones.',
+        textAm: 'Կփոխեի դիրքս և կլսեի նոր ցուցումները։',
+      },
+      {
+        key: 'C',
+        textEs: 'Intentaría convencer a todos de mantener la estrategia anterior.',
+        textAm: 'Կփորձեի բոլորին համոզել պահպանել նախորդ տակտիկան։',
+      },
+      {
+        key: 'D',
+        textEs: 'Me quedaría junto a la línea de banda.',
+        textAm: 'Կմնայի կողային գծի մոտ։',
+      },
+    ],
+    correctOptionKey: 'B',
+    explanationEs: 'La disciplina táctica y la flexibilidad posicional son fundamentales para equilibrar el equipo.',
+    explanationAm: 'Տակտիկական կարգապահությունն ու դիրքային ճկունությունը անհրաժեշտ են խաղը վերահսկելու համար։',
+  },
+  {
+    id: 20,
+    part: 4,
+    partTitleEs: 'Parte 4. Comunicación y trabajo en equipo',
+    partTitleAm: 'Մաս 4. Հաղորդակցություն և թիմային աշխատանք',
+    questionEs: 'Quedan cinco minutos. Tu equipo está empatando 2-2 y tú notas que el defensa rival está muy cansado. ¿Qué harías?',
+    questionAm: 'Մնացել է հինգ րոպե։ Թիմդ խաղում է 2-2, և դու նկատում ես, որ մրցակցի պաշտպանը շատ հոգնած է։ Ի՞նչ կանեիր։',
+    options: [
+      {
+        key: 'A',
+        textEs: 'Dejaría de atacar por su banda.',
+        textAm: 'Կդադարեի նրա եզրով գրոհել։',
+      },
+      {
+        key: 'B',
+        textEs: 'Esperaría a que recuperara fuerzas.',
+        textAm: 'Կսպասեի, մինչև նա վերականգներ ուժերը։',
+      },
+      {
+        key: 'C',
+        textEs: 'Mantendría siempre el balón lejos de él.',
+        textAm: 'Գնդակը միշտ նրանից հեռու կպահեի։',
+      },
+      {
+        key: 'D',
+        textEs: 'Intentaría aprovechar su cansancio con cambios de ritmo y desmarques.',
+        textAm: 'Կփորձեի օգտագործել նրա հոգնածությունը՝ տեմպի փոփոխություններով և ազատ տեղաշարժերով։',
+      },
+    ],
+    correctOptionKey: 'D',
+    explanationEs: 'Explotar la fatiga del rival en los minutos finales mediante cambios de ritmo genera desequilibrios decisivos.',
+    explanationAm: 'Մրցակցի հոգնածությունն օգտագործելը տեմպի կտրուկ փոփոխություններով հաղթական գոլի հնարավորություն է ստեղծում։',
+  },
+];
+
+export const CONVERSATION_PROMPTS: ConversationPrompt[] = [
+  {
+    id: 1,
+    promptEs: '¿Por qué harías eso?',
+    promptAm: 'Ինչո՞ւ այդպես կվարվեիր։',
+    helpfulStartersEs: [
+      'Porque en esa situación es mejor...',
+      'Creo que la decisión más inteligente es...',
+      'Para evitar un contraataque del rival...',
+      'Porque mi prioridad siempre es el equipo...',
+    ],
+    helpfulStartersAm: [
+      'Որովհետև այդ իրավիճակում ավելի լավ է...',
+      'Կարծում եմ՝ ամենախելացի որոշումն է...',
+      'Մրցակցի հակագրոհից խուսափելու համար...',
+      'Որովհետև իմ առաջնահերթությունը միշտ թիմն է...',
+    ],
+    explanation: 'Explica tus motivos futbolísticos usando conectores como «porque», «ya que» o «con el fin de».',
+  },
+  {
+    id: 2,
+    promptEs: '¿Qué pasaría si no funcionara?',
+    promptAm: 'Ի՞նչ տեղի կունենար, եթե դա չստացվեր։',
+    helpfulStartersEs: [
+      'Si no funcionara, tendría que replegarme rápido...',
+      'El rival recuperaría el balón y atacaría...',
+      'Tendríamos que reorganizar la defensa de inmediato...',
+      'Aprendería del error para la siguiente jugada...',
+    ],
+    helpfulStartersAm: [
+      'Եթե չստացվեր, ստիպված կլինեի արագ հետ քաշվել...',
+      'Մրցակիցը կխլեր գնդակը և կգրոհեր...',
+      'Պետք է անմիջապես վերակազմակերպեինք պաշտպանությունը...',
+      'Ես դաս կքաղեի սխալից հաջորդ դրվագի համար...',
+    ],
+    explanation: 'Practica el condicional simple y las hipótesis en español para prever consecuencias en el partido.',
+  },
+  {
+    id: 3,
+    promptEs: '¿Has vivido alguna vez una situación parecida?',
+    promptAm: 'Երբևէ նման իրավիճակում հայտնվե՞լ ես։',
+    helpfulStartersEs: [
+      'Sí, una vez jugando con mis amigos...',
+      'Nunca me ha pasado exactamente así, pero...',
+      'Recuerdo un partido difícil en el que...',
+      'Siempre lo veo en los partidos de la Champions League...',
+    ],
+    helpfulStartersAm: [
+      'Այո, մի անգամ ընկերներիս հետ խաղալիս...',
+      'Ինձ հետ ճիշտ այդպես չի եղել, բայց...',
+      'Հիշում եմ մի դժվար հանդիպում, որտեղ...',
+      'Ես միշտ դա տեսնում եմ Չեմպիոնների լիգայի խաղերում...',
+    ],
+    explanation: 'Comparte experiencias reales de fútbol o partidos que hayas visto usando el pretérito perfecto y compuesto.',
+  },
+];
+
+export const WHEEL_SECTORS: WheelSector[] = [
+  { id: 0, labelEs: '100 pts', labelAm: '100 միավոր', type: 'points', value: 100, color: '#16a34a', textColor: '#ffffff' },
+  { id: 1, labelEs: '250 pts', labelAm: '250 միավոր', type: 'points', value: 250, color: '#2563eb', textColor: '#ffffff' },
+  { id: 2, labelEs: '+ Sector', labelAm: '+ Բացել տառ', type: 'plus', value: 150, color: '#d97706', textColor: '#ffffff' },
+  { id: 3, labelEs: '500 pts', labelAm: '500 միավոր', type: 'points', value: 500, color: '#059669', textColor: '#ffffff' },
+  { id: 4, labelEs: 'x2 Doble', labelAm: 'x2 Կրկնակի', type: 'double', value: 0, color: '#7c3aed', textColor: '#ffffff' },
+  { id: 5, labelEs: '150 pts', labelAm: '150 միավոր', type: 'points', value: 150, color: '#0284c7', textColor: '#ffffff' },
+  { id: 6, labelEs: 'Premio ⚽', labelAm: 'Մրցանակ ⚽', type: 'prize', value: 300, color: '#e11d48', textColor: '#ffffff' },
+  { id: 7, labelEs: '350 pts', labelAm: '350 միավոր', type: 'points', value: 350, color: '#10b981', textColor: '#ffffff' },
+  { id: 8, labelEs: 'Bancarrota ❌', labelAm: 'Սնանկացում ❌', type: 'bankrupt', value: 0, color: '#334155', textColor: '#ef4444' },
+  { id: 9, labelEs: '750 pts', labelAm: '750 միավոր', type: 'points', value: 750, color: '#4f46e5', textColor: '#ffffff' },
+  { id: 10, labelEs: 'Oro 1000', labelAm: 'Ոսկի 1000', type: 'points', value: 1000, color: '#ca8a04', textColor: '#ffffff' },
+  { id: 11, labelEs: 'Chut Libre', labelAm: 'Ազատ հարված', type: 'chance', value: 200, color: '#0d9488', textColor: '#ffffff' },
+];
+
+export const SECRET_WORD = 'RONALDO';

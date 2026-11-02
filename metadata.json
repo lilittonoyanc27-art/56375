@@ -1,0 +1,6 @@
+{
+  "name": "Rueda de Fútbol: Polé Chudes & Quiz",
+  "description": "Juego de Polé Chudes en español y armenio con 20 situaciones de fútbol reales y adivinanza de la palabra Ronaldo.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
